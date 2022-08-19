@@ -1,0 +1,54 @@
+*{
+    margin:0;
+    border: 0;
+    padding: 0;
+    box-sizing: 0;
+}
+body{
+    background-color: #F0F2F5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    min-width: 100vw;
+}
+main.container {
+    background: rgb(205, 150, 252);
+    box-shadow: rgb(149, 65, 202) 0px 0px 0px 2px inset, rgb(255, 255, 255) 10px -10px 0px -3px, rgb(114, 109, 109) 10px -10px, rgb(255, 255, 255) 20px -20px 0px -3px, rgb(114, 109, 109) 20px -20px, rgb(255, 255, 255) 30px -30px 0px -3px, rgb(114, 109, 109) 30px -30px, rgb(255, 255, 255) 40px -40px 0px -3px, rgb(114, 109, 109) 40px -40px;
+    padding: 5rem;
+    border-radius: 10px;
+}
+
+main.container .logo {
+    border-radius: 100px;
+    border: 3px solid rgb(149, 65, 202);
+}
+
+.input-area input {
+    outline: none;
+    font-size: 0.95rem;
+    color: rgba(0,0,0,0.7);
+    border-radius: 3px;
+    height: 30px;
+    margin-top: 10px;
+}
+main.container button {
+    box-shadow: 0px 0px 0px 2px rgb(205, 150, 252);
+	background:linear-gradient(to bottom, rgb(205, 150, 252) 5%, rgb(194, 153, 230) 100%);
+	background-color: rgb(0,0,0);
+	border-radius:10px;
+	border:1px solid rgb(0,0,0);
+	display:inline-block;
+	cursor:pointer;
+	color: rgb(0,0,0);
+	font-family:Arial;
+	font-size:14px;
+	padding: 5px 10px;
+	text-decoration:none;
+    margin-top: 10px;
+}
+
+.EnterOrRegister {
+    text-decoration: none;
+    display: block;
+}

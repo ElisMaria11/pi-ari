@@ -1,0 +1,68 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema ELISPI
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema ELISPI
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `ELISPI` DEFAULT CHARACTER SET utf8 ;
+USE `ELISPI` ;
+
+-- -----------------------------------------------------
+-- Table `ELISPI`.`TB_USUARIOS`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ELISPI`.`TB_USUARIOS` (
+  `USR_ID` INT NOT NULL AUTO_INCREMENT,
+  `USR_EMAIL` VARCHAR(45) NOT NULL,
+  `USR_SENHA` VARCHAR(20) NOT NULL,
+  `USR_NOME` VARCHAR(33) NOT NULL,
+  `USR_DATACADASTRO` DATETIME NOT NULL,
+  PRIMARY KEY (`USR_ID`),
+  UNIQUE INDEX `USR_EMAIL_UNIQUE` (`USR_EMAIL` ASC))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `ELISPI`.`TB_SERIES`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ELISPI`.`TB_SERIES` (
+  `SRS_ID` INT NOT NULL AUTO_INCREMENT,
+  `SRS_NOME` VARCHAR(60) NOT NULL UNIQUE,
+  `SRS_DESCRICAO` VARCHAR(90) NULL,
+  `SRS_TEMPORADA` INT NOT NULL,
+  `SRS_EPISODIO` INT NOT NULL,
+  `SRS_URI` VARCHAR(90) NULL,
+  PRIMARY KEY (`SRS_ID`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `ELISPI`.`TB_SERIESUSUARIOS`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ELISPI`.`TB_SERIESUSUARIOS` (
+  `SUS_USR_ID` INT NOT NULL,
+  `SUS_SRS_ID` INT NOT NULL AUTO_INCREMENT,
+  INDEX `fk_TB_SERIESUSUARIOS_TB_USUARIOS_idx` (`SUS_USR_ID` ASC),
+  INDEX `fk_TB_SERIESUSUARIOS_TB_SERIES1_idx` (`SUS_SRS_ID` ASC),
+  CONSTRAINT `fk_TB_SERIESUSUARIOS_TB_USUARIOS`
+    FOREIGN KEY (`SUS_USR_ID`)
+    REFERENCES `ELISPI`.`TB_USUARIOS` (`USR_ID`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_TB_SERIESUSUARIOS_TB_SERIES1`
+    FOREIGN KEY (`SUS_SRS_ID`)
+    REFERENCES `ELISPI`.`TB_SERIES` (`SRS_ID`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
