@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-
+/*
 <?php
 session_start();
 include("conexao.php");
@@ -15,7 +15,7 @@ if (mysqli_num_rows($resultUser) != 1) {
 }
 
 ?>
-
+*/
 <html>
 
 <head>
