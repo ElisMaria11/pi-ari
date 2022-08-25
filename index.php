@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-<?php
-include("conexao.php");
-
-?>
 <html>
 
 <head>
